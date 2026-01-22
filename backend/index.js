@@ -71,13 +71,17 @@ app.get("/api/vibe", (req, res) => {
 });
 
 // POST /api/smash -> increases counter and returns the updated value
+let smashCount = 0;
+
 app.post("/api/smash", (req, res) => {
-  smashes += 1;
-  res.json({
-    message: "💥 Smash registered!",
-    count: smashes
-  });
+  smashCount++;
+  res.json({ smashes: smashCount });
 });
+
+app.get("/api/smashes", (req, res) => {
+  res.json({ smashes: smashCount });
+});
+
 
 
 // GET /api/smashes -> returns current counter
